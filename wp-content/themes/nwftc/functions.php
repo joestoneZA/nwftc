@@ -3,6 +3,8 @@ add_action( 'after_setup_theme', 'theme_setup' );
 function theme_setup()
 {
 add_theme_support( 'post-thumbnails' );
+add_image_size( 'footer-image', 9999, 80 );
+add_image_size( 'left-right-image', 9999, 500 );
 register_nav_menus(
 array( 'main-menu' => __( 'Main Menu', 'sitemenu' ) )
 );
@@ -14,17 +16,18 @@ function mytheme_scripts() {
   wp_enqueue_style( 'bootstrap-grid', get_template_directory_uri() . '/css/bootstrap.min.css' );
   wp_enqueue_style( 'slick-css', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.min.css' );
  	wp_enqueue_style( 'slick-theme-css', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick-theme.min.css' );
- 	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Maven+Pro:400,500,700|Source+Sans+Pro:300,400,600,700' );
+  wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Maven+Pro:400,500,700|Source+Sans+Pro:300,400,600,700' );
  	wp_enqueue_style( 'style', get_stylesheet_uri() );
   wp_enqueue_style( 'layout', get_template_directory_uri() . '/css/layout.css' );
 
 	wp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js', array('jquery'), null, true);
   wp_register_script('slick-js', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.min.js', array('jquery'), null, true);
+  wp_register_script('match-height', 'https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js', array('jquery'), null, true);
 	wp_register_script('main-js', get_template_directory_uri() . '/js/main.min.js', array('jquery'), null, true);
 
 	wp_enqueue_script('jquery');
-	wp_enqueue_script('slick-js');
-
+  wp_enqueue_script('slick-js');
+  wp_enqueue_script('match-height');
 	wp_enqueue_script('main-js');
 
 }
@@ -84,3 +87,20 @@ function content($limit) {
   $content = str_replace(']]>', ']]&gt;', $content);
   return $content;
 }
+
+function create_posttype_careers() {
+ 
+    register_post_type( 'careers',
+        array(
+            'labels' => array(
+                'name' => __( 'Careers' ),
+                'singular_name' => __( 'Career' )
+            ),
+            'public' => true,
+            'has_archive' => true,
+            'rewrite' => array('slug' => 'careers'),
+            'supports' => array( 'title', 'editor','revisions',  ),
+        )
+    );
+}
+add_action( 'init', 'create_posttype_careers' );

@@ -24,7 +24,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12">
-					<div class="logo appear">
+					<div class="logo">
 						<a href="<?php echo site_url(); ?>">
 							<img src="<?php the_field('header_logo','options'); ?>" />
 						</a>

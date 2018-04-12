@@ -1,3 +1,18 @@
+<div class="top-footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 footer-images">
+				<?php if( have_rows('footer_images','options') ): ?>
+				    <?php while ( have_rows('footer_images','options') ) : the_row(); ?>
+				        <div>
+				        	<?php echo wp_get_attachment_image( get_sub_field('image','options'), 'footer-image' ); ?>
+				        </div>
+				    <?php endwhile; ?>
+				<?php endif; ?>
+			</div>
+		</div>
+	</div>
+</div>
 <footer>
 	<div class="container">
 		<div class="row">
