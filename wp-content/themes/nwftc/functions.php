@@ -1,10 +1,11 @@
-<?php 
+<?php
 add_action( 'after_setup_theme', 'theme_setup' );
 function theme_setup()
 {
 add_theme_support( 'post-thumbnails' );
 add_image_size( 'footer-image', 9999, 80 );
 add_image_size( 'left-right-image', 9999, 500 );
+add_image_size( 'team-member-image', 450, 450 );
 register_nav_menus(
 array( 'main-menu' => __( 'Main Menu', 'sitemenu' ) )
 );

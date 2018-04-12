@@ -1,5 +1,11 @@
 jQuery(document).ready(function($){
 
+	$('.team-members .item').click(function(){
+		$('.team-members .item .inner').removeClass('active');
+		$('.team-members .team-row').removeClass('active');
+		$(this).closest('.team-row').addClass('active');
+		$(this).children('.inner').addClass('active');
+	});
 	$(".set > a").on("click", function() {
 		if ($(this).hasClass("active")) {
 			$(this).removeClass("active");
