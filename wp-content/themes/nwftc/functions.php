@@ -18,17 +18,22 @@ function mytheme_scripts() {
   wp_enqueue_style( 'slick-css', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.min.css' );
  	wp_enqueue_style( 'slick-theme-css', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick-theme.min.css' );
   wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Maven+Pro:400,500,700|Source+Sans+Pro:300,400,600,700' );
+  wp_enqueue_style( 'full-calendar-css', 'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css' );
  	wp_enqueue_style( 'style', get_stylesheet_uri() );
   wp_enqueue_style( 'layout', get_template_directory_uri() . '/css/layout.css' );
 
 	wp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js', array('jquery'), null, true);
   wp_register_script('slick-js', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.min.js', array('jquery'), null, true);
   wp_register_script('match-height', 'https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js', array('jquery'), null, true);
+  wp_register_script('moment', 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js', array('jquery'), null, true);
+  wp_register_script('full-calendar-js', 'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js', array('jquery'), null, true);
 	wp_register_script('main-js', get_template_directory_uri() . '/js/main.min.js', array('jquery'), null, true);
 
 	wp_enqueue_script('jquery');
   wp_enqueue_script('slick-js');
   wp_enqueue_script('match-height');
+  wp_enqueue_script('moment');
+  wp_enqueue_script('full-calendar-js');
 	wp_enqueue_script('main-js');
 
 }
@@ -105,3 +110,21 @@ function create_posttype_careers() {
     );
 }
 add_action( 'init', 'create_posttype_careers' );
+
+function create_posttype_testimonials() {
+ 
+    register_post_type( 'testimonials',
+        array(
+            'labels' => array(
+                'name' => __( 'Testimonials' ),
+                'singular_name' => __( 'Testimonial' )
+            ),
+            'public' => true,
+            'has_archive' => true,
+            'rewrite' => array('slug' => 'testimonials'),
+            'supports' => array( 'title', 'editor','revisions',  ),
+            'rewrite' => array( 'slug' => 'feedback','with_front' => FALSE),
+        )
+    );
+}
+add_action( 'init', 'create_posttype_testimonials' );

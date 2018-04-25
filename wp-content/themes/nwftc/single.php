@@ -1,4 +1,5 @@
 <?php get_header(); ?>
+<?php include('inc/top-link-bar.php'); ?>
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 	<div class="container news-detail">
 		<div class="row">

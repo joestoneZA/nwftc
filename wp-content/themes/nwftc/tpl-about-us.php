@@ -4,22 +4,34 @@ get_header(); ?>
 
 <?php include('inc/top-link-bar.php'); ?>
 
-<div class="full-width-image">
-	<?php the_post_thumbnail(); ?>
-</div>
-
-<section>
-  <div class="grid-flex">
-      <div class="col col-image">
-        <?php echo wp_get_attachment_image( get_field('left_image'), 'left-right-image' ); ?>
-      </div>
-    <div class="col col-text">
-      <div class="aligner-item">
-        <?php the_field('right_content'); ?>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="full-width-image">
+      	<?php the_post_thumbnail(); ?>
       </div>
     </div>
   </div>
-</section>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <section>
+        <div class="grid-flex">
+            <div class="col col-image">
+              <?php echo wp_get_attachment_image( get_field('left_image'), 'left-right-image' ); ?>
+            </div>
+          <div class="col col-text">
+            <div class="aligner-item">
+              <?php the_field('right_content'); ?>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
 
 <?php if( have_rows('downloads') ): ?>
   <div class="container">
@@ -42,31 +54,43 @@ get_header(); ?>
   </div>
 <?php endif; ?>
 
-<section>
-  <div class="grid-flex">
-    <div class="col col-text">
-      <div class="aligner-item">
-        <?php the_field('left_content'); ?>
-      </div>
-    </div>
-    <div class="col col-image">
-      <?php echo wp_get_attachment_image( get_field('right_image'), 'left-right-image' ); ?>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <section>
+        <div class="grid-flex">
+          <div class="col col-text">
+            <div class="aligner-item">
+              <?php the_field('left_content'); ?>
+            </div>
+          </div>
+          <div class="col col-image">
+            <?php echo wp_get_attachment_image( get_field('right_image'), 'left-right-image' ); ?>
+          </div>
+        </div>
+      </section>
     </div>
   </div>
-</section>
+</div>
 
-<section>
-  <div class="grid-flex">
-      <div class="col col-image">
-        <?php echo wp_get_attachment_image( get_field('left_image_2'), 'left-right-image' ); ?>
-      </div>
-    <div class="col col-text">
-      <div class="aligner-item">
-        <?php the_field('right_content_2'); ?>
-      </div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <section>
+        <div class="grid-flex">
+            <div class="col col-image">
+              <?php echo wp_get_attachment_image( get_field('left_image_2'), 'left-right-image' ); ?>
+            </div>
+          <div class="col col-text">
+            <div class="aligner-item">
+              <?php the_field('right_content_2'); ?>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   </div>
-</section>
+</div>
 
 <?php endwhile; endif; ?>
 <?php get_footer(); ?>

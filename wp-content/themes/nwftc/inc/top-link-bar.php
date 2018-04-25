@@ -16,17 +16,17 @@ $post_slug=$post->post_name; ?>
 							Meet The Team
 						</a>
 					</li>
-					<li class="<?php if($post_slug == 'feedback'){ ?>active<?php } ?>">
+					<li class="<?php if(is_post_type_archive('testimonials')){ ?>active<?php } ?>">
 						<a href="<?php echo site_url(); ?>/feedback">
 							Feedback
 						</a>
 					</li>
-					<li class="<?php if(is_home()){ ?>active<?php } ?>">
+					<li class="<?php if(is_home() || is_singular('post')){ ?>active<?php } ?>">
 						<a href="<?php echo site_url(); ?>/news">
 							News
 						</a>
 					</li>
-					<li class="<?php if(is_archive('careers') || is_singular('careers')){ ?>active<?php } ?>">
+					<li class="<?php if(is_post_type_archive('careers') || is_singular('careers')){ ?>active<?php } ?>">
 						<a href="<?php echo site_url(); ?>/careers">
 							Careers
 						</a>
