@@ -22,13 +22,13 @@
 							<label>
 								location
 							</label>
-							<select class="material" name="location">
-							<?php $location_opts = get_locations();
-							foreach($location_opts as $location){?>
+							<select class="material">
 								<option>
-									<?=$location->title?>
+									option 1
 								</option>
-							<?php } ?>
+								<option>
+									option 2
+								</option>
 							</select>
 						</div>
 						<div class="col-sm-3">

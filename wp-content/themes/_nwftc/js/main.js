@@ -1,22 +1,5 @@
 jQuery(document).ready(function($){
-$( "#winda" ).change(function() {
-	$('.loading').show();
-    numberval = $('#winda').val();
-    $.ajax({
-        type: "POST",
-        dataType: "json",
-        url: "/winda_search.php",
-        data: {search: numberval},
-        success: function(data) {
-			$('.loading').hide();
-           $('#firstname').val(data["firstname"]);
-           $('#lastname').val(data["lastname"]);
-        },
-        error : function(){
-           	$('.loading').hide();
-        }
-    });
-});
+
 (function() {
 	$('select.material').each(function() {
 		$(this).hide();
@@ -75,7 +58,7 @@ $(function() {
   var YESTERDAY = todayDate.clone().subtract(1, 'day').format('YYYY-MM-DD');
   var TODAY = todayDate.format('YYYY-MM-DD');
   var TOMORROW = todayDate.clone().add(1, 'day').format('YYYY-MM-DD');
-/*
+
   $('#calendar').fullCalendar({
     header: {
       left: 'prev,next today',
@@ -142,19 +125,6 @@ $(function() {
       }
     ]
   });
-  */
-  $('#calendar').fullCalendar({
-      header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'month,basicWeek,basicDay'
-      },
-      defaultDate: '2018-04-24',
-      navLinks: true, // can click day/week names to navigate views
-      editable: true,
-      eventLimit: true, // allow "more" link when too many events
-      events: 'http://wfportal.dev-zeroabove.co.uk/calendar/feed?website_feed=1'
-    });
 });
 
 	$('.team-members .item').click(function(){
@@ -178,7 +148,7 @@ $(function() {
 		}
 	});
 	$(function () {
-    	$('.news-listing .item, .similar-posts .items .item,.feedback-listing .item .inner .content, .home .feedback-home .inner, .home .news-home .inner,.course-listing .item .inner .content').matchHeight();
+    	$('.news-listing .item, .similar-posts .items .item,.feedback-listing .item .inner .content, .home .feedback-home .inner, .home .news-home .inner').matchHeight();
     });
 	$(function() {
 		var selectedClass = "";
