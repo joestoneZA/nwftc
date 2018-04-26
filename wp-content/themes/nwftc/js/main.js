@@ -1,4 +1,9 @@
 jQuery(document).ready(function($){
+
+$('.share-link').click(function(){
+	$('.course-detail-page .top-section .share-buttons').slideToggle();
+	$(this).closest('.inner').toggleClass('active');
+});
 $( "#winda" ).change(function() {
 	$('.loading').show();
     numberval = $('#winda').val();
@@ -178,7 +183,8 @@ $(function() {
 		}
 	});
 	$(function () {
-    	$('.news-listing .item, .similar-posts .items .item,.feedback-listing .item .inner .content, .home .feedback-home .inner, .home .news-home .inner,.course-listing .item .inner .content').matchHeight();
+    	$('.news-listing .item, .similar-posts .items .item,.feedback-listing .item .inner .content, .home .feedback-home .inner, .home .news-home .inner,.course-listing .item .inner').matchHeight();
+    	$('.course-listing .item .inner .content').matchHeight();
     });
 	$(function() {
 		var selectedClass = "";

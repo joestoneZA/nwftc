@@ -129,6 +129,18 @@ a {
 		padding:7px 18px;
 		max-width:200px;
 		text-align:center;
+		&.grey {
+			background:$lightGrey;
+			color:$textColour;
+		}
+		&.white {
+			background:$white;
+			color:$textColour;
+		}
+		&.grey-white {
+			background:$darkGrey;
+			color:$white;
+		}
 		&:hover {
 			background:$blue;
 			color:$white;
@@ -1281,7 +1293,7 @@ header.header {
 		padding-right:5px;
 		h2 {
 			font-size:24px;
-			margin:20px 0;
+			margin:20px 0 15px 0;
 			a {
 				color:$textColour;
 			}
@@ -1293,7 +1305,10 @@ header.header {
 		padding-right:5px;
 		transform: scale(1);
 		.inner {
+			border-left:8px solid;
+			border-radius:4px;
 			box-shadow:0 0 0 -10px $black;
+			position:relative;
 			transition:all 0.1s ease-in-out;
 			img {
 				float:left;
@@ -1316,6 +1331,56 @@ header.header {
 					font-weight:600;
 					margin-top:10px;
 				}
+				a.grey {
+					cursor:pointer;
+					margin-right:0;
+				}
+				a.grey,
+				a.orange {
+					margin-top:10px;
+					max-width:100%;
+					position:relative;
+					width:100%;
+					z-index:4;
+				}
+				.bg-overlay {
+					background:rgba(0,0,0,0);
+					height:100%;
+					left:0;
+					position:absolute;
+					transition:all 0.2s ease-in-out;
+					top:0;
+					width:100%;
+					z-index:-1;
+				}
+				.share-buttons {
+					left:50%;
+					opacity:0;
+					position:absolute;
+					top:50%;
+					visibility:hidden;
+					transform:translate(-50%,-50%);
+					transition:all 0.4s ease-in-out;
+					width:auto;
+					z-index:3;
+					.a2a_svg {
+						height:24px;
+						line-height:24px;
+						width:24px;
+					}
+				}
+			}
+			&.active {
+				.content {
+					.share-buttons {
+						opacity:1;
+						visibility:visible;
+					}
+					.bg-overlay {
+						background:rgba(0,0,0,0.7);
+						z-index:2;
+					}
+				}
 			}
 		}
 		&:hover {
@@ -1327,6 +1392,100 @@ header.header {
 }
 
 /*END OF COURSE LISTING*/
+
+/*COURSE DETAIL PAGE*/
+
+.course-detail-page {
+	.top-section {
+		a.link {
+			cursor:pointer;
+			margin:20px 10px 0 0;
+		}
+		h1 {
+			font-size:24px;
+		}
+		.share-buttons {
+			clear:both;
+			padding-top:10px;
+		}
+	}
+}
+
+/*END OF COURSE DETAIL PAGE*/
+
+/*CALENDAR*/
+
+.calendar-page {
+	#calendar {
+		margin-top:30px;
+		.fc-event {
+			border:0px solid transparent;
+		}
+		.fc-widget-header {
+			color:$textColour;
+			font-size:16px;
+			font-weight:600;
+		}
+		.fc-day-grid-event {
+			border-radius:30px;
+			.fc-content {
+				border-radius:30px;
+				font-size:11px;
+				padding:10px;
+			}
+		}
+		.fc td,
+		.fc th	{
+			border-width:2px;
+		}
+		button.fc-today-button {
+			background:$orange;
+			color:$textColour;
+			border:0;
+			border-radius:2px;
+			color:$white;
+			font-family:'Maven Pro', sans-serif;
+			font-weight:500;
+			height:auto;
+			outline-width:0;
+			padding:10px 22px;
+			text-shadow:none;
+			text-transform:capitalize;
+			transition:all 0.2s ease-in-out;
+			&.fc-state-active {
+				background:$textColour;
+			}
+			&:hover {
+				background:$textColour;
+			}
+		}
+		.fc-button-group {
+			background:$orange;
+			button {
+				background:transparent;
+				border:0;
+				border-radius:2px;
+				color:$white;
+				font-family:'Maven Pro', sans-serif;
+				font-weight:500;
+				height:auto;
+				outline-width:0;
+				padding:10px 22px;
+				text-shadow:none;
+				text-transform:capitalize;
+				transition:all 0.2s ease-in-out;
+				&.fc-state-active {
+					background:$textColour;
+				}
+				&:hover {
+					background:$textColour;
+				}
+			}
+		}
+	}
+}
+
+/*END OF CALENDAR*/
 
 /*RESPONSIVE*/
 
@@ -1360,6 +1519,30 @@ header.header {
 
 @media (min-width:768px) {
 
+	.course-detail-page {
+		.top-section {
+			a.link {
+				float:right;
+				margin:10px 0 0 10px;
+			}
+		}
+	}
+	.course-listing {
+		.item {
+			.inner {
+				.content {
+					a.grey {
+						margin-right:10px;
+					}
+					a.grey,
+					a.orange {
+						max-width:200px;
+						width:auto;
+					}
+				}
+			}
+		}
+	}
 	.team-members {
 		.team-row {
 			padding-bottom:0;
@@ -1698,6 +1881,21 @@ header.header {
 
 @media (min-width:992px){
 
+	.course-detail-page {
+		.top-section {
+			text-align:right;
+			h1,
+			p {
+				text-align:left;
+			}
+			a.link {
+				float:none;
+				font-size:16px;
+				margin:25px 0 0 10px;
+				padding:10px 18px;
+			}
+		}
+	}
 	.team-members {
 		.team-row {
 			&.active {
@@ -1817,6 +2015,14 @@ header.header {
 					padding:15px;
 					h3 {
 						font-size:20px;
+					}
+					.share-buttons {
+						.a2a_svg {
+							height:40px;
+							line-height:40px;
+							margin:0 5px;
+							width:40px;
+						}
 					}
 				}
 			}
